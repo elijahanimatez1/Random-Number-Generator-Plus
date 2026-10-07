@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Number Generator Plus</title>
+  <style>
+    body.dark-mode {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode #settingsPanel {
+      background-color: #252525 !important;
+      border-color: #555 !important;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode input {
+      background-color: #333;
+      color: #f1f1f1;
+      border: 1px solid #777;
+    }
+  </style>
+</head>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+  </style>
+</head>
+<body>
+  <h1>Random Number Generator Plus</h1>
+
+  <label>Min: <input type="number" id="min" value="0"></label>
+  <label>Max: <input type="number" id="max" value="100"></label>
+  <button onclick="generate()">Generate!</button>
+
+  <h2 id="result">?</h2>
+
+  <script>
+    function showNotification(message) {
+      alert(message);
+    }
+
+    function toggleDarkMode(checkbox) {
+      document.body.classList.toggle("dark-mode", checkbox.checked);
+    }
+
+    function generate() {
+      let min = Number(document.getElementById("min").value);
+      let max = Number(document.getElementById("max").value);
+
+      if (!Number.isFinite(min) || !Number.isFinite(max)) {
+        showNotification("Please enter a valid number.");
+        return;
+      }
+
+      if (min > max) {
+        [min, max] = [max, min];
+        document.getElementById("min").value = min;
+        document.getElementById("max").value = max;
+      }
+
+      const number = Math.floor(Math.random() * (max - min + 1)) + min;
+      document.getElementById("result").textContent = number;
+    }
+  </script>
+
+
+  <button onclick="showNotification('ElijahAnimatez - coded this whole thing :D')" style="font-size:25px; background-color: rgb(253, 253, 253); color:rgb(0, 0, 0); border-radius: 15px;">Credits</button>
+    <button onclick="window.location.href='more-tools.html'" style="font-size:25px; background-color: rgb(2, 2, 2); color:rgb(255, 255, 255); border-radius: 15px;">More Tools</button>
+
+<button id="settingsButton" onclick="var panel=document.getElementById('settingsPanel'); panel.style.display = (panel.style.display === 'none') ? 'block' : 'none';" style="font-size:25px; background-color: grey; color:antiquewhite; border-radius: 15px; margin-top: 10px;">Settings</button>
+<div id="settingsPanel" style="display:none; margin-top:10px; width:280px; padding:12px; border:1px solid #ccc; border-radius:12px; background:#f5f5f5; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+  <h3 style="margin:0 0 10px;">Settings</h3>
+ <label>
+  <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode(this)">
+  Toggle dark mode
+</label>
+  <button onclick="window.open('https://youtube.com/@elijahanimatez', '_blank')" style="padding:8px 15px; border-radius:15px; cursor:pointer;">YT Channel (shameless plug)</button>
+</div>
+</body>
+</html>
