@@ -1,2 +1,3 @@
 # Random-Number-Generator-Plus
-Random Number Generator with some Quality of Life Features
+Something I coded because I was bored
+AI ASSISTED
